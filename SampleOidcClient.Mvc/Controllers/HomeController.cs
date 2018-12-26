@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Web;
 using System.Web.Mvc;
 
@@ -24,6 +25,13 @@ namespace SampleOidcClient.Mvc.Controllers
         {
             ViewBag.Message = "Your contact page.";
 
+            return View();
+        }
+
+        [Authorize]
+        public ActionResult RestrictedContent()
+        {
+            ViewBag.Message = "This content is for logged-in users only";
             return View();
         }
     }
